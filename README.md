@@ -16,4 +16,4 @@
 
 ## Diagrama de casos de uso
 
-<span>![</span><span>Diagrama de casos de uso</span><span>]</span><span>(</span><span>https://github.com/Intro-CompuMovil/Lovemal/blob/main/Lovemal_CU.jpg</span><span>)</span>
+![Casos de uso](Lovemal_CU.jpg)
