@@ -1,7 +1,6 @@
 # Lovemal
 
-# Nombre del grupo 
-_ Los Lápices Élite
+# Nombre del grupo - Los Lápices Élite
 
 # Integrantes
 
