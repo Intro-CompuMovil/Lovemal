@@ -16,3 +16,4 @@
 
 ## Diagrama de casos de uso
 
+https://github.com/Intro-CompuMovil/Lovemal/blob/main/Lovemal_CU.jpg
