@@ -12,8 +12,8 @@
 
 ## Diagrama de clases
 
-![Diagrama de clases](Clases_Lovemal.jpg)
+![Diagrama de clases](images/Clases_Lovemal.jpg)
 
 ## Diagrama de casos de uso
 
-![Casos de uso](Lovemal_CU.jpg)
+![Casos de uso](images/Lovemal_CU.jpg)
