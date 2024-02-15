@@ -5,12 +5,22 @@
 # Integrantes
 
 - Bryan Camilo Ocampo
+
+  Estudiante  5to semestre de Ingenieria de Sistemas. 21 años. Futuro empresario y CEO de LOVEMAL.
+
+  ![Foto Bryan](images/FotoBryan.jpg)
   
 - Juan David Rincón
+
+  Soy Juan David Rincon, tengo 18 años y soy estudiante de ingeniería de sistemas y estoy en 5to semestre. Tengo dos meses de experiencia laboral en Uber. Futuro emprendedor.
+
+  ![Foto Juanda](images/FotoJuanda.jpg)
   
 - Julián Rodríguez Céspedes
+
+  ![Foto Julián](images/FotoJulian.jpg)
   
-  Estudiante de quinto semestre de ingeniería de sistemas.
+  Soy un estudiante de quinto semestre de ingeniería de sistemas. Tengo 19 años y muchas ganas de aportarle al mundo con nuestra aplicación.
 
 # Entregables
 
