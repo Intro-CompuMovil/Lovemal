@@ -12,7 +12,7 @@
 
 ## Diagrama de clases
 
-
+![Diagrama de clases](Clases_Lovemal.jpg)
 
 ## Diagrama de casos de uso
 
