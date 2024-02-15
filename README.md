@@ -33,3 +33,19 @@
 ![Casos de uso](images/Lovemal_CU.jpg)
 
 ## Pantallas principales
+
+### Iniciar Sesión
+
+![Mockup de Iniciar Sesión](images/IniciarSesion.jpg)
+
+### Buscar Match
+
+![Mockup de Buscar Match](images/BuscarMatch.jpg)
+
+### Comprar Cachorro
+
+![Mockup de Comprar Cachorro](images/ComprarCachorro.jpg)
+
+### Buscar Veterinaria
+
+![Mockup de Buscar Veterinario](images/BuscarVet.jpg)
