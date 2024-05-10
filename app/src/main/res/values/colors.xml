@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="red">#FF0000</color>
+    <color name="green">#008000</color>
+    <color name="backgroundButtons">#9C0000</color>
+    <color name="backGraoundApp">#0064BC</color>
+    <color name="fondo">#E6E2E2</color>
+    <color name="fondoSeleccionado">#C3C3C3</color>
+    <color name="beige">#E8E5C6</color>
+    <color name="backGroundMainMenu">#F08080</color>
+    <color name="backGroundMenuApp">#D45E5E</color>
+    <color name="buttonMenuApp">#FFDAB9</color>
+    <color name="color1">#F08080</color>
+    <color name="color2">#F4978E</color>
+    <color name="color3">#F8AD9D</color>
+    <color name="color4">#FBC4AB</color>
+    <color name="marketBackGrounud">#EBEBEB</color>
+
+</resources>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Lovemal</string>
+    <string name="bioKal">Soy un perro juguetón y aventurero que ama la vida. Me encanta correr y jugar en el parque, perseguir pelotas y frisbees, dar paseos largos por la playa y nadar en el mar. También disfruto jugando con otros perros y acurrucarme con Superman que es mi dueño. Soy un perro con mucha energía y entusiasmo, alegre y cariñoso. Soy obediente, me encanta aprender nuevos trucos y siempre estoy dispuesto a una aventura.</string>
+    <string name="title_activity_maps">MapsActivity</string>
+</resources>

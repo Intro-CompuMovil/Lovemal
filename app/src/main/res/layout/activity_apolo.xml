@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Portal"
+    android:background="@color/white">
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager2"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp" />
+    <TextView
+        android:id="@+id/txtNombrePerro"
+        android:layout_below="@id/viewPager2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="Apolo"
+        android:textStyle="bold|italic"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="50dp"/>
+    <TextView
+        android:id="@+id/txtApolo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:text="3 años, le gusta abrir puertas y escaparse de la casa"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_below="@id/txtNombrePerro"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+    <Button
+        android:id="@+id/btnComprar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$500.000"
+        android:textSize="25dp"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/red"
+        android:layout_below="@+id/txtApolo2"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>

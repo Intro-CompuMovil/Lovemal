@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "600773982689",
+    "firebase_url": "https://icm24101-419314-default-rtdb.firebaseio.com",
+    "project_id": "icm24101-419314",
+    "storage_bucket": "icm24101-419314.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:600773982689:android:e9930db8b057a4f756faa0",
+        "android_client_info": {
+          "package_name": "com.example.lovemal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcjSO22AbbGbtB7LL0ByDOfF-FnDtcqFM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

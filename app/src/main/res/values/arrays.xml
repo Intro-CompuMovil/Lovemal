@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="veterinarias">
+        <item>Health and Care Veterinaria 24 Horas Bogotá Norte</item>
+        <item>Chechovet Centro Veterinario Cedritos 24/7</item>
+        <item>Nefrovet Colombia</item>
+        <item>Clínica Veterinaria Bogotá Dogtor</item>
+        <item>Asimev Veterinaria</item>
+        <item>Veterinaria Pro Animal</item>
+        <item>Clínica Veterinaria Zoovet</item>
+        <item>Clínica de Pequeños Animales Veterinaria</item>
+        <item>Clinica Veterinaria Patotas SAS</item>
+        <item>Clínica Veterinaria Dr Alvaro Chaparro, Dra Mariana Chaparro</item>
+        <item>Clinica Veterinaria Mis Mejores Amigos</item>
+        <item>Kanicat. Clínica Veterinaria.</item>
+    </string-array>
+
+
+    <string-array name="mascotas">
+        <item>Apolo: Perro</item>
+        <item>Lupita: Gata</item>
+    </string-array>
+</resources>
