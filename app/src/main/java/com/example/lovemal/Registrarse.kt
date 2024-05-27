@@ -170,7 +170,6 @@ class Registrarse : AppCompatActivity() {
         if (requestCode == CAMERA_PERMISSION_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 openCamera()
-            } else {
             }
         }
     }

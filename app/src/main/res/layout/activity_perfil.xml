@@ -97,6 +97,20 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="20dp"/>
 
+    <ImageButton
+        android:id="@+id/btnAddPet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/baseline_add_circle_outline_24"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignRight="@id/idMascota"
+        android:layout_below="@id/linLay1"/>
+
     <LinearLayout
         android:id="@+id/linLay2"
         android:layout_width="match_parent"

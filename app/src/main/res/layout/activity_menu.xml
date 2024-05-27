@@ -71,4 +71,17 @@
 
     </Button>
 
+    <Button
+        android:id="@+id/btnAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/buttonMenuApp"
+        android:text="Administrar mascotas"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold|normal"
+        >
+
+    </Button>
+
 </LinearLayout>

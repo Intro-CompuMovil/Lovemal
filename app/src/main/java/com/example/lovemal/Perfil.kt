@@ -15,15 +15,26 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.viewpager.widget.ViewPager
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class Perfil : AppCompatActivity() {
 
     private val CAMERA_PERMISSION_CODE = 100
     private val CAMERA_REQUEST_CODE = 101
 
+    private val PATH_PETS = "pets/"
+    private lateinit var database: FirebaseDatabase
+    private lateinit var myRef: DatabaseReference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_perfil)
+
+        val currentUserUid = intent.getStringExtra("currentUserUid")
+
+        val btnNewPet = findViewById<ImageButton>(R.id.btnAddPet)
+        btnNewPet.setOnClickListener { addPet() }
 
         val viewPager: ViewPager = findViewById(R.id.viewPager)
         val imageList = listOf(R.drawable.perrocavil1, R.drawable.perrocavil2, R.drawable.perrocavil3)
@@ -33,6 +44,10 @@ class Perfil : AppCompatActivity() {
         askPermissionCamera()
 
         fillList()
+    }
+
+    private fun addPet(){
+
     }
 
     private fun fillList() {
