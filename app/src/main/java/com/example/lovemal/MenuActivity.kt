@@ -1,16 +1,26 @@
 package com.example.lovemal
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.Button
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import kotlin.properties.Delegates
 
 class MenuActivity : AppCompatActivity() {
 
     private lateinit var currentUserUid: String
+    private val PATH_USERS = "users/"
+    private lateinit var database: FirebaseDatabase
+    private lateinit var myRef: DatabaseReference
+    private var admin by Delegates.notNull<Boolean>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,9 +28,35 @@ class MenuActivity : AppCompatActivity() {
 
         currentUserUid = intent.getStringExtra("current_user_uid")!!
 
+        isAdmin()
         manageButtons()
     }
 
+    private fun isAdmin(){
+        val btnAdmin = findViewById<Button>(R.id.btnAdmin)
+        admin = false
+        database = FirebaseDatabase.getInstance()
+        myRef = database.getReference(PATH_USERS)
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (singleSnapshot in dataSnapshot.children) {
+                    val myUser = singleSnapshot.getValue(MyUser::class.java)
+                    Log.i(TAG, "Encontró usuario: " + myUser?.name)
+                    if(myUser?.key == currentUserUid){
+                        admin = myUser.admin
+                        if(!admin){
+                            btnAdmin.visibility = View.INVISIBLE
+                        }
+                        Log.i(TAG, "El usuario es admin? " + admin)
+                        break
+                    }
+                }
+            }
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.w(TAG, "error en la consulta", databaseError.toException())
+            }
+        })
+    }
     private fun manageButtons(){
         val btnPerfil = findViewById<Button>(R.id.btnPerfil)
         btnPerfil.setOnClickListener { goToPerfil()  }
@@ -35,7 +71,9 @@ class MenuActivity : AppCompatActivity() {
     }
 
     private fun goToPerfil(){
-        val intent = Intent(this, Perfil::class.java)
+        val intent = Intent(this, Perfil::class.java).apply {
+            putExtra("currentUserUid", currentUserUid)
+        }
         startActivity(intent)
     }
 
