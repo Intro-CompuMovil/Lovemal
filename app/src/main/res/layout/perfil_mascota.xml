@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/foto_pet"
+        android:src="@drawable/foto_bernes"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="40dp" />
+
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="220dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="30dp"
+        android:layout_below="@+id/foto_pet"
+        android:text="Nombre masota"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/age_pet"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/txtName"
+        android:text="Edad"
+        android:layout_marginStart="30dp"
+        android:textSize="18sp"
+        android:textColor="@color/dark_gray"/>
+
+    <TextView
+        android:id="@+id/weight_pet"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_below="@+id/txtName"
+        android:layout_toRightOf="@+id/age_pet"
+        android:text="Peso"
+        android:textSize="18sp"
+        android:textColor="@color/dark_gray"/>
+
+    <TextView
+        android:id="@+id/height_pet"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/age_pet"
+        android:text="Altura"
+        android:layout_marginStart="30dp"
+        android:textSize="18sp"
+        android:textColor="@color/dark_gray"/>
+
+    <TextView
+        android:id="@+id/breed_pet"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_below="@+id/weight_pet"
+        android:layout_toRightOf="@+id/height_pet"
+        android:text="Raza"
+        android:textSize="18sp"
+        android:textColor="@color/dark_gray"/>
+
+    <TextView
+        android:id="@+id/txtPersona"
+        android:layout_width="360dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_below="@+id/height_pet"
+        android:text="Descripcion"
+        android:textSize="18sp"
+        android:textColor="@color/dark_gray"/>
+
+</RelativeLayout>

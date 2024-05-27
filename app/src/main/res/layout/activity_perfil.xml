@@ -86,7 +86,7 @@
         android:id="@+id/idMascota"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mascota"
+        android:text="Mascota/s"
         android:textColor="@color/red"
         android:layout_below="@id/linLay1"
         android:textStyle="bold"
@@ -97,69 +97,14 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="20dp"/>
 
-    <LinearLayout
-        android:id="@+id/linLay2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_below="@id/idMascota">
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_below="@id/idMascota"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="10dp"/>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginStart="15dp">
-
-            <TextView
-                android:id="@+id/idNameDog"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nombre: Kal"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/idrRaz"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Raza: Akita Americano"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/idedad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Edad: 12 años"
-                android:textSize="18sp" />
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/idBioDog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/bioKal"
-        android:layout_below="@id/linLay2"
-        android:textSize="15sp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
-
     <ListView
-        android:id="@+id/petsList"
-        android:layout_below="@+id/idBioDog"
+        android:id="@+id/listStar"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="40dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/idMascota"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

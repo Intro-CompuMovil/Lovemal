@@ -17,5 +17,12 @@
     <color name="color3">#F8AD9D</color>
     <color name="color4">#FBC4AB</color>
     <color name="marketBackGrounud">#EBEBEB</color>
-
+    <color name="gray">#DDDDDD</color>
+    <color name="dark_gray">#555555</color>
+    <color name="white_vanilla">#FCFCFC</color>
+    <color name="yellow">#F2AC3C</color>
+    <color name="blue">#056CC1</color>
+    <color name="green_dark">#41B06E</color>
+    <color name="green_bright">#54C242</color>
+    <color name="blue_bright">#0076FF</color>
 </resources>
