@@ -1,4 +1,4 @@
-package com.example.lovemal
+package com.example.lovemal.models
 
 class Pet {
     var nombre: String = ""

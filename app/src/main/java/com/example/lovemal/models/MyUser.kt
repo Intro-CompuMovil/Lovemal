@@ -1,4 +1,4 @@
-package com.example.lovemal
+package com.example.lovemal.models
 
 class MyUser {
     var name: String = ""

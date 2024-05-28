@@ -86,7 +86,7 @@
         android:id="@+id/idMascota"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mascota/s"
+        android:text="Mascota"
         android:textColor="@color/red"
         android:layout_below="@id/linLay1"
         android:textStyle="bold"
@@ -97,8 +97,22 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="20dp"/>
 
+    <ImageButton
+        android:id="@+id/btnAddPet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/baseline_add_circle_outline_24"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignRight="@id/idMascota"
+        android:layout_below="@id/linLay1"/>
+
     <ListView
-        android:id="@+id/listStar"
+        android:id="@+id/petList"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="40dp"

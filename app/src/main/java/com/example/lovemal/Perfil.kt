@@ -36,11 +36,6 @@ class Perfil : AppCompatActivity() {
         val btnNewPet = findViewById<ImageButton>(R.id.btnAddPet)
         btnNewPet.setOnClickListener { addPet() }
 
-        val viewPager: ViewPager = findViewById(R.id.viewPager)
-        val imageList = listOf(R.drawable.perrocavil1, R.drawable.perrocavil2, R.drawable.perrocavil3)
-        val adapter = ImagePagerAdapter(this, imageList)
-        viewPager.adapter = adapter
-
         askPermissionCamera()
 
         fillList()
@@ -58,7 +53,7 @@ class Perfil : AppCompatActivity() {
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, mascotasArray)
 
         // Obtener la referencia del ListView
-        val listView = findViewById<ListView>(R.id.petsList)
+        val listView = findViewById<ListView>(R.id.petList)
 
         // Asignar el adaptador al ListView
         listView.adapter = adapter
