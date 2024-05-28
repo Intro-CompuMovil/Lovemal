@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.lovemal.databinding.ActivityRegistrarMascotaBinding
+import com.example.lovemal.models.Pet
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import java.util.UUID
@@ -103,12 +104,11 @@ class RegistrarMascota : AppCompatActivity() {
     }
 
     private fun addPet(){
-
             database = FirebaseDatabase.getInstance()
             myRef = database.getReference(PATH_PETS)
             binding.btnNextStep.setOnClickListener {
                 if (validateForm()) {
-                    var myPet = Pet()
+                    val myPet = Pet()
                     myPet.nombre = binding.txtNombre.text.toString()
                     myPet.descripcion = binding.txtDescripcion.text.toString()
                     myPet.altura = binding.txtAltura.text.toString().toInt()
@@ -125,7 +125,6 @@ class RegistrarMascota : AppCompatActivity() {
 
                     myRef = database.getReference(PATH_PETS + myPet.key)
                     myRef.setValue(myPet)
-
 
                     binding.btnNextStep.setOnClickListener {
                         val intent = Intent(this, Perfil::class.java).apply {
