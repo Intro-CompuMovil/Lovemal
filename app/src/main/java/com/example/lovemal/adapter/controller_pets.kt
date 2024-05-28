@@ -1,11 +1,37 @@
+import android.content.ContentValues.TAG
+import android.util.Log
+import android.widget.Toast
 import com.example.lovemal.models.MyUser
 import com.example.lovemal.models.Pet
+import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 class PetManagerFirebase(databaseReference: DatabaseReference) {
-    private val databaseReference: DatabaseReference
+    /*private val databaseReference: DatabaseReference
+
+    private lateinit var database: FirebaseDatabase
+    private lateinit var myRef: DatabaseReference
+
+    fun loadPets() {
+        myRef = database.getReference(PATH_USERS)
+        myRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (singleSnapshot in dataSnapshot.children) {
+                    val myPet = singleSnapshot.getValue(Pet::class.java)
+                    Log.i(TAG, "Encontró mascota: " + myPet?.nombre)
+                    val name = myPet?.nombre
+                    val age = myPet?.edad
+                    Toast.makeText(this, "$name: $age", Toast.LENGTH_SHORT).show()
+                }
+            }
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.w(TAG, "error en la consulta", databaseError.toException())
+            }
+        })
+    }
 
     init {
         this.databaseReference = databaseReference.child(PATH_USERS) // Apply path for users
@@ -61,5 +87,5 @@ class PetManagerFirebase(databaseReference: DatabaseReference) {
     companion object {
         private const val PATH_USERS = "users/"
         private const val PATH_PETS = "pets/"
-    }
+    }*/
 }

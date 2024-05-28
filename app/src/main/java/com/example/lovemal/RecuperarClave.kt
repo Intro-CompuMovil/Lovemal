@@ -5,38 +5,40 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
-class RecuperarClave : AppCompatActivity() {
+public class RecuperarClave : AppCompatActivity() {
+
+
+    private lateinit var firebaseAuth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recuperar_clave)
-
-        sendEmail()
+        val txtmail : TextView = findViewById(R.id.editTxtCorreo)
+        val btnCambiar : Button = findViewById(R.id.btnCorreo)
+        btnCambiar.setOnClickListener(){
+            changePassword(txtmail.text.toString())
+        }
     }
 
-    private fun sendEmail(){
-        val btnCorreo = findViewById<Button>(R.id.btnCorreo)
-
-        btnCorreo.setOnClickListener {
-            val txtEmail = findViewById<EditText>(R.id.editTxtCorreo).text.toString()
-            if(txtEmail.isEmpty())
-                Toast.makeText(this, "Escriba el correo", Toast.LENGTH_SHORT).show()
-            else{
-                if (!validMail(txtEmail)) {
-                    Toast.makeText(this, "El correo electrónico es inválido", Toast.LENGTH_SHORT).show()
-                } else {
+    private fun changePassword(email : String){
+        firebaseAuth = Firebase.auth
+        firebaseAuth.sendPasswordResetEmail(email)
+            .addOnCompleteListener { task ->
+                if(task.isSuccessful)
+                {
+                    Toast.makeText(baseContext, "Correo de cambio de contraseña enviado exitosamente", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, MainActivity::class.java)
-                    Toast.makeText(this, "Correo enviado exitosamente", Toast.LENGTH_SHORT).show()
                     startActivity(intent)
                 }
+                else
+                {
+                    Toast.makeText(baseContext, "Error, no se pudo enviar el email para cambiar la contraseña", Toast.LENGTH_SHORT).show()
+                }
             }
-        }
-
-    }
-
-    private fun validMail (correo: String): Boolean {
-        val emailParameters = Regex("^[A-Za-z](.*)([@]{1})(.{1,})(\\.)(.{1,})")
-        return emailParameters.matches(correo)
     }
 }

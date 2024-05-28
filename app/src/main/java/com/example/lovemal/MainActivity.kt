@@ -71,43 +71,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun goToPortal() {
-        /*val btnIniciarSesion = findViewById<Button>(R.id.btnSesion)
-        btnIniciarSesion.setOnClickListener{
-            val editTextEmail = findViewById<EditText>(R.id.EmAdrssUser)
-            val editTextPassword = findViewById<EditText>(R.id.password)
-
-            val email = editTextEmail.text.toString()
-            val password = editTextPassword.text.toString()
-
-            var credencialesVacias = false
-            if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Complete todos los campos", Toast.LENGTH_SHORT).show()
-                credencialesVacias = true
-            }
-
-            val jsonArray = loadUsuariosFromJSON()
-
-            var credencialesValidas = false
-
-            for (i in 0 until jsonArray.length()) {
-                val jsonObject = jsonArray.getJSONObject(i)
-                val jsonEmail = jsonObject.getString("correo")
-                val jsonPassword = jsonObject.getString("clave")
-
-                if (email == jsonEmail && password == jsonPassword) {
-                    credencialesValidas = true
-                    break
-                }
-            }
-
-            if (credencialesValidas) {
-                val intentPortal = Intent(this, MenuActivity::class.java)
-                startActivity(intentPortal)
-                finish() //Es posible que nos pidan quitarlo
-            } else if (!credencialesVacias) {
-                Toast.makeText(this, "Credenciales inválidas", Toast.LENGTH_SHORT).show()
-            }
-        }*/
         val email = findViewById<EditText>(R.id.EmAdrssUser)
         val password = findViewById<EditText>(R.id.password)
         val btnLogin = findViewById<Button>(R.id.btnSesion)
