@@ -23,6 +23,8 @@ class Perfil : AppCompatActivity() {
     private val CAMERA_PERMISSION_CODE = 100
     private val CAMERA_REQUEST_CODE = 101
 
+    private lateinit var currentUserUid: String
+
     private val PATH_PETS = "pets/"
     private lateinit var database: FirebaseDatabase
     private lateinit var myRef: DatabaseReference
@@ -31,7 +33,7 @@ class Perfil : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_perfil)
 
-        val currentUserUid = intent.getStringExtra("currentUserUid")
+        currentUserUid = intent.getStringExtra("currentUserUid")!!
 
         val btnNewPet = findViewById<ImageButton>(R.id.btnAddPet)
         btnNewPet.setOnClickListener { addPet() }
@@ -47,7 +49,10 @@ class Perfil : AppCompatActivity() {
     }
 
     private fun addPet(){
-
+        val intent = Intent(this, RegistrarMascota::class.java).apply {
+            putExtra("currentUserUid", currentUserUid)
+        }
+        startActivity(intent)
     }
 
     private fun fillList() {
@@ -94,7 +99,6 @@ class Perfil : AppCompatActivity() {
         if (requestCode == CAMERA_PERMISSION_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 openCamera()
-            } else {
             }
         }
     }

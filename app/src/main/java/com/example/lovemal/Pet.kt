@@ -6,6 +6,8 @@ class Pet {
     var raza: String = ""
     var edad: Int = 0
     var key: String = ""
-    var altura: Double = 0.0
-    var peso: Double = 0.0
+    var altura: Int = 0
+    var peso: Int = 0
+    var keyUser: String = ""
+    var animal: String = ""
 }
