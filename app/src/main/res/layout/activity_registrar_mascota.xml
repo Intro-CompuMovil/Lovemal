@@ -53,23 +53,56 @@
         android:id="@+id/txtAltura"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Altura..."
+        android:hint="Altura... (en centímetros)"
         android:layout_below="@+id/txtEdad"
         android:layout_marginTop="10dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:inputType="numberDecimal"/>
+        android:inputType="number"/>
 
     <EditText
         android:id="@+id/txtPeso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Peso..."
+        android:hint="Peso... (en kilos)"
         android:layout_below="@+id/txtAltura"
         android:layout_marginTop="10dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:inputType="numberDecimal"/>
+        android:inputType="number"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroupMascota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtPeso"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioPerro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Perro"
+            android:textColor="@color/white"/>
+
+        <RadioButton
+            android:id="@+id/radioGato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gato"
+            android:textColor="@color/white"/>
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/radioGroupError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/radioGroupMascota"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/red"
+        android:visibility="gone"
+        android:text="Debe seleccionar una opción"/>
 
     <Button
         android:id="@+id/btnNextStep"

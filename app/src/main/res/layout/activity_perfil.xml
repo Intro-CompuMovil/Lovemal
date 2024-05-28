@@ -57,7 +57,7 @@
                 android:id="@+id/idName2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" Henry Cavill"
+                android:text=""
                 android:textSize="16sp"
                 android:textStyle="italic"/>
 
@@ -74,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="hcavil@gmail.com"
+                android:text=""
                 android:textSize="16sp"
                 android:textStyle="italic"/>
 

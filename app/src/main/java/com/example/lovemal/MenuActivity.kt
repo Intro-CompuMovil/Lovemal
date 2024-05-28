@@ -26,10 +26,10 @@ class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
+        isAdmin()
 
         currentUserUid = intent.getStringExtra("current_user_uid")!!
 
-        isAdmin()
         manageButtons()
     }
 
