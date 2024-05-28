@@ -68,7 +68,7 @@
         android:textColor="@color/dark_gray"/>
 
     <TextView
-        android:id="@+id/txtPersona"
+        android:id="@+id/description"
         android:layout_width="360dp"
         android:layout_height="40dp"
         android:layout_marginStart="30dp"

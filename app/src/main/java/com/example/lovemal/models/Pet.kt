@@ -8,4 +8,6 @@ class Pet {
     var key: String = ""
     var altura: Double = 0.0
     var peso: Double = 0.0
+    var keyUser: String = ""
+    var animal: String = ""
 }
