@@ -10,4 +10,6 @@ class Pet {
     var peso: Int = 0
     var keyUser: String = ""
     var animal: String = ""
+    var sexo: String = ""
+    var esCachorro: Boolean = false
 }

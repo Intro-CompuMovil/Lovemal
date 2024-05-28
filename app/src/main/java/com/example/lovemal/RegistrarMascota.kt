@@ -92,12 +92,20 @@ class RegistrarMascota : AppCompatActivity() {
             binding.txtPeso.error = null
         }
 
-        // Validar selección del RadioGroup
+        // Validar selección del RadioGroup de animal
         if (binding.radioGroupMascota.checkedRadioButtonId == -1) {
             binding.radioGroupError.visibility = View.VISIBLE
             valid = false
         } else {
             binding.radioGroupError.visibility = View.GONE
+        }
+
+        // Validar selección del RadioGroup de sexo
+        if (binding.radioGroupMascota2.checkedRadioButtonId == -1) {
+            binding.radioGroupError2.visibility = View.VISIBLE
+            valid = false
+        } else {
+            binding.radioGroupError2.visibility = View.GONE
         }
 
         return valid
@@ -122,16 +130,18 @@ class RegistrarMascota : AppCompatActivity() {
                         R.id.radioGato -> "Gato"
                         else -> ""
                     }
-
+                    myPet.sexo = when (binding.radioGroupMascota2.checkedRadioButtonId){
+                        R.id.radioMacho -> "Macho"
+                        R.id.radioHembra -> "Hembra"
+                        else -> ""
+                    }
                     myRef = database.getReference(PATH_PETS + myPet.key)
                     myRef.setValue(myPet)
 
-                    binding.btnNextStep.setOnClickListener {
-                        val intent = Intent(this, Perfil::class.java).apply {
-                            putExtra("currentUserUid", currentUserUid)
-                        }
-                        startActivity(intent)
+                    val intent = Intent(this, Perfil::class.java).apply {
+                        putExtra("currentUserUid", currentUserUid)
                     }
+                    startActivity(intent)
                 }
                 else{
                     Toast.makeText(this, "Complete los campos", Toast.LENGTH_SHORT).show()

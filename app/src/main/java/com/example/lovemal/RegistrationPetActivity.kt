@@ -1,5 +1,6 @@
 package com.example.lovemal
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -10,11 +11,21 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.lovemal.models.Pet
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.slider.RangeSlider
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import java.text.DecimalFormat
+import java.util.UUID
 
 class RegistrationPetActivity : AppCompatActivity() {
+
+    private lateinit var currentUserUid: String
+
+    private val PATH_PUPPIES = "puppies/"
+    private lateinit var database: FirebaseDatabase
+    private lateinit var myRef: DatabaseReference
 
     private var isDogSelecter:Boolean = true
     private var isDog2Selecter:Boolean = false
@@ -37,12 +48,33 @@ class RegistrationPetActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration_pet)
 
+        currentUserUid = intent.getStringExtra("currentUserUid")!!
+
         initComponent()
         initListeners()
         initUI()
 
         val btnRegistrar = findViewById<Button>(R.id.idBtnRegistrar)
-        btnRegistrar.setOnClickListener { Toast.makeText(this, "¡Mascota registrada!", Toast.LENGTH_SHORT).show() }
+        btnRegistrar.setOnClickListener {addPetToDB()}
+    }
+
+    private fun addPetToDB(){
+        database = FirebaseDatabase.getInstance()
+        myRef = database.getReference(PATH_PUPPIES)
+
+        val myPet = Pet()
+        myPet.esCachorro = true
+        myPet.key = UUID.randomUUID().toString()
+
+        myRef = database.getReference(PATH_PUPPIES + myPet.key)
+        myRef.setValue(myPet)
+
+        Toast.makeText(this, "¡Mascota registrada!", Toast.LENGTH_SHORT).show()
+
+        val intent = Intent(this, MenuActivity::class.java).apply {
+            putExtra("currentUserUid", currentUserUid)
+        }
+        startActivity(intent)
     }
 
     private fun initComponent(){

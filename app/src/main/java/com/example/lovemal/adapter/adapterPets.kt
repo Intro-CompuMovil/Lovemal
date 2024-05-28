@@ -24,6 +24,7 @@ class adapterPets(private val context: Context, private val pets: List<Pet>) : B
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+
         val view: View = convertView ?: LayoutInflater
             .from(context).inflate(R.layout.perfil_mascota, parent, false)
 

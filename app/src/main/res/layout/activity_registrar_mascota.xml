@@ -94,11 +94,45 @@
             android:textColor="@color/white"/>
     </RadioGroup>
 
+    <RadioGroup
+        android:id="@+id/radioGroupMascota2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtPeso"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioMacho"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Macho"
+            android:textColor="@color/white"/>
+
+        <RadioButton
+            android:id="@+id/radioHembra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hembra"
+            android:textColor="@color/white"/>
+    </RadioGroup>
+
     <TextView
         android:id="@+id/radioGroupError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/radioGroupMascota"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/red"
+        android:visibility="gone"
+        android:text="Debe seleccionar una opción"/>
+
+    <TextView
+        android:id="@+id/radioGroupError2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/radioGroupMascota2"
         android:layout_marginTop="5dp"
         android:textColor="@color/red"
         android:visibility="gone"

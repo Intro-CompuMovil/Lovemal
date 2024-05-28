@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         forgottenPassword()
     }
 
-    private fun forgottenPassword(){
+    private fun forgottenPassword() {
         val btnRecuperarClave = findViewById<Button>(R.id.btnRecuperarClave)
         btnRecuperarClave.setOnClickListener {
             val intent = Intent(this, RecuperarClave::class.java)
@@ -63,7 +63,8 @@ class MainActivity : AppCompatActivity() {
     private fun isEmailValid(email: String): Boolean {
         if (!email.contains("@") ||
             !email.contains(".") ||
-            email.length < 5) {
+            email.length < 5
+        ) {
             Toast.makeText(this, "Datos inválidos", Toast.LENGTH_SHORT).show()
             return false
         }
@@ -75,7 +76,7 @@ class MainActivity : AppCompatActivity() {
         val password = findViewById<EditText>(R.id.password)
         val btnLogin = findViewById<Button>(R.id.btnSesion)
         btnLogin.setOnClickListener {
-            if(validateForm() && isEmailValid(email.text.toString())){
+            if (validateForm() && isEmailValid(email.text.toString())) {
                 auth = Firebase.auth
 
                 auth.signInWithEmailAndPassword(
@@ -96,9 +97,8 @@ class MainActivity : AppCompatActivity() {
                             ).show()
                             email.setText("")
                             password.setText("")
-                        }
-                        else{
-                            Toast.makeText(this, "Authentication done.",Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(this, "Authentication done.", Toast.LENGTH_SHORT).show()
                             val currentUserUid = auth.currentUser?.uid
 
                             // Inicia la siguiente actividad y envía la UID del usuario actual como extra
@@ -108,32 +108,16 @@ class MainActivity : AppCompatActivity() {
                             finish()
                         }
                     }
-            }
-            else{
+            } else {
                 email.setText("")
                 password.setText("")
             }
         }
     }
 
-    private fun registerUsser(){
+    private fun registerUsser() {
         val btnRegistrarse = findViewById<Button>(R.id.btnRegister)
-        btnRegistrarse.setOnClickListener{startActivity(Intent(this, Registrarse::class.java))}
+        btnRegistrarse.setOnClickListener { startActivity(Intent(this, Registrarse::class.java)) }
     }
 
-    private fun loadUsuariosFromJSON(): JSONArray {
-        var json: String? = null
-        try {
-            val inputStream = assets.open("usuarios.JSON")
-            val size = inputStream.available()
-            val buffer = ByteArray(size)
-            inputStream.read(buffer)
-            inputStream.close()
-            json = String(buffer, Charset.forName("UTF-8"))
-        } catch (ex: IOException) {
-            ex.printStackTrace()
-        }
-        val jsonObject = JSONObject(json)
-        return jsonObject.getJSONArray("usuarios")
-    }
 }

@@ -6,13 +6,16 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import com.example.lovemal.models.MyUser
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 import kotlin.properties.Delegates
 
 class MenuActivity : AppCompatActivity() {
@@ -69,6 +72,10 @@ class MenuActivity : AppCompatActivity() {
         btnMarkPet.setOnClickListener { goToMarkPet()  }
         val btnBuyPartner = findViewById<Button>(R.id.btnBuyPet)
         btnBuyPartner.setOnClickListener { goToFindPartner()  }
+        val btnAdmin = findViewById<Button>(R.id.btnAdmin)
+        btnAdmin.setOnClickListener { goToAdminPets() }
+        val btnLogOut = findViewById<ImageButton>(R.id.btnLogOut)
+        btnLogOut.setOnClickListener { logOut() }
     }
 
     private fun goToPerfil(){
@@ -84,7 +91,9 @@ class MenuActivity : AppCompatActivity() {
     }
 
     private fun goToMarkPet(){
-        val intent = Intent(this, RegistrationPetActivity::class.java)
+        val intent = Intent(this, RegistrationPetActivity::class.java).apply {
+            putExtra("currentUserUid", currentUserUid)
+        }
         startActivity(intent)
     }
     private fun goToVetGPS(){
@@ -97,4 +106,18 @@ class MenuActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    private fun goToAdminPets(){
+        val intent = Intent(this, AdminActivity::class.java).apply {
+            putExtra("currentUserUid", currentUserUid)
+        }
+        startActivity(intent)
+    }
+
+    private fun logOut(){
+        val auth = Firebase.auth
+        auth.signOut()
+        val intent = Intent(this, MainActivity::class.java)
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
+    }
 }

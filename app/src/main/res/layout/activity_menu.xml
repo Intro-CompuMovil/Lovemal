@@ -1,87 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_margin="15dp"
-    android:gravity="center"
     tools:context=".MenuActivity"
     android:background="@color/backGroundMenuApp">
 
-    <Button
-        android:id="@+id/btnPerfil"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Perfil"
-        android:backgroundTint="@color/buttonMenuApp"
-        android:textStyle="bold|normal"
-        android:textColor="@color/black"
-        android:textSize="20dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="15dp"
+        android:gravity="center"
+        tools:context=".MenuActivity"
+        android:background="@color/backGroundMenuApp">
 
-    </Button>
+        <Button
+            android:id="@+id/btnPerfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Perfil"
+            android:backgroundTint="@color/buttonMenuApp"
+            android:textStyle="bold|normal"
+            android:textColor="@color/black"
+            android:textSize="20dp">
 
-    <Button
-        android:id="@+id/btnFindMatch"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Buscar Pareja"
-        android:backgroundTint="@color/buttonMenuApp"
-        android:textStyle="bold|normal"
-        android:textColor="@color/black"
-        android:textSize="20dp">
+        </Button>
 
-    </Button>
+        <Button
+            android:id="@+id/btnFindMatch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Buscar Pareja"
+            android:backgroundTint="@color/buttonMenuApp"
+            android:textStyle="bold|normal"
+            android:textColor="@color/black"
+            android:textSize="20dp">
 
-    <Button
-        android:id="@+id/btnVetGPS"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Veterinarias Asociadas"
-        android:backgroundTint="@color/buttonMenuApp"
-        android:textStyle="bold|normal"
-        android:textColor="@color/black"
-        android:textSize="20dp">
+        </Button>
 
-    </Button>
+        <Button
+            android:id="@+id/btnVetGPS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Veterinarias Asociadas"
+            android:backgroundTint="@color/buttonMenuApp"
+            android:textStyle="bold|normal"
+            android:textColor="@color/black"
+            android:textSize="20dp">
 
-    <Button
-        android:id="@+id/btnMarkPet"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Registro Mascota Venta"
-        android:backgroundTint="@color/buttonMenuApp"
-        android:textStyle="bold|normal"
-        android:textColor="@color/black"
-        android:textSize="20dp">
+        </Button>
 
-    </Button>
+        <Button
+            android:id="@+id/btnMarkPet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Registro Mascota Venta"
+            android:backgroundTint="@color/buttonMenuApp"
+            android:textStyle="bold|normal"
+            android:textColor="@color/black"
+            android:textSize="20dp">
 
-    <Button
-        android:id="@+id/btnBuyPet"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Encuentra tu compañero"
-        android:backgroundTint="@color/buttonMenuApp"
-        android:textStyle="bold|normal"
-        android:textColor="@color/black"
-        android:textSize="20dp">
+        </Button>
 
-    </Button>
+        <Button
+            android:id="@+id/btnBuyPet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Encuentra tu compañero"
+            android:backgroundTint="@color/buttonMenuApp"
+            android:textStyle="bold|normal"
+            android:textColor="@color/black"
+            android:textSize="20dp">
 
-    <Button
-        android:id="@+id/btnAdmin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/buttonMenuApp"
-        android:text="Administrar mascotas"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold|normal"
-        >
+        </Button>
 
-    </Button>
+        <Button
+            android:id="@+id/btnAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/buttonMenuApp"
+            android:text="Administrar mascotas"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold|normal">
 
-</LinearLayout>
+        </Button>
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btnLogOut"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:scaleType="fitCenter"
+        android:layout_alignParentRight="true"
+        app:srcCompat="@drawable/baseline_logout_24"
+        android:backgroundTint="@color/backGroundMenuApp"/>
+
+</RelativeLayout>

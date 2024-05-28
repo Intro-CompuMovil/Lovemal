@@ -9,31 +9,37 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class PetManagerFirebase(databaseReference: DatabaseReference) {
-    /*private val databaseReference: DatabaseReference
+class PetManagerFirebase() {
 
     private lateinit var database: FirebaseDatabase
     private lateinit var myRef: DatabaseReference
 
-    fun loadPets() {
-        myRef = database.getReference(PATH_USERS)
+    private var PATH_PETS = "pets/"
+
+    private var petsList: MutableList<Pet> = mutableListOf()
+
+    fun loadPets(): MutableList<Pet> {
+
+        myRef = database.getReference(PATH_PETS)
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (singleSnapshot in dataSnapshot.children) {
                     val myPet = singleSnapshot.getValue(Pet::class.java)
                     Log.i(TAG, "Encontró mascota: " + myPet?.nombre)
-                    val name = myPet?.nombre
-                    val age = myPet?.edad
-                    Toast.makeText(this, "$name: $age", Toast.LENGTH_SHORT).show()
+                    if (myPet != null) {
+                        petsList.add(myPet)
+                    }
                 }
             }
             override fun onCancelled(databaseError: DatabaseError) {
                 Log.w(TAG, "error en la consulta", databaseError.toException())
             }
         })
+
+        return petsList
     }
 
-    init {
+   /* init {
         this.databaseReference = databaseReference.child(PATH_USERS) // Apply path for users
     }
 

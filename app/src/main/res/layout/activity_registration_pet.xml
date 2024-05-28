@@ -144,7 +144,7 @@
                 android:id="@+id/txtAge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="15"
+                android:text="15 meses"
                 android:textSize="30sp"
                 android:textStyle="bold">
 
@@ -195,7 +195,7 @@
                 android:id="@+id/txtAltura"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="15"
+                tools:text="15 cm"
                 android:textSize="30sp"
                 android:textStyle="bold">
 
@@ -262,7 +262,7 @@
                 android:id="@+id/txtPeso"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="15"
+                tools:text="15 kg"
                 android:textSize="30sp"
                 android:textStyle="bold">
 
