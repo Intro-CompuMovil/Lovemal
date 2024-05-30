@@ -66,9 +66,6 @@ class RegistrarMascota : AppCompatActivity() {
         photo_pet = findViewById(R.id.imgRegisDog)
         btn_add = findViewById(R.id.btn_photo)
 
-
-
-
         currentUserUid = intent.getStringExtra("currentUserUid")!!
 
         btn_add.setOnClickListener {
