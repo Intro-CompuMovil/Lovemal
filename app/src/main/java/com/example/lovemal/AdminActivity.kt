@@ -28,10 +28,11 @@ class AdminActivity : AppCompatActivity() {
     }
 
     private fun managePets(){
+        loadPets()
 
     }
 
-    fun loadPets(): MutableList<Pet> {
+    fun loadPets() {
 
         myRef = database.getReference(PATH_PUPPIES)
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -48,7 +49,5 @@ class AdminActivity : AppCompatActivity() {
                 Log.w(ContentValues.TAG, "error en la consulta", databaseError.toException())
             }
         })
-
-        return puppiesList
     }
 }

@@ -63,7 +63,6 @@ class RegistrationPetActivity : AppCompatActivity() {
         myRef = database.getReference(PATH_PUPPIES)
 
         val myPet = Pet()
-        myPet.esCachorro = true
         myPet.key = UUID.randomUUID().toString()
         myPet.sexo = getSelectedSex()
         myPet.edad = getSelectedAge()

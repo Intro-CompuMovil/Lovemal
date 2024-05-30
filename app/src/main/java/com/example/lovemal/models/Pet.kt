@@ -11,5 +11,5 @@ class Pet {
     var keyUser: String = ""
     var animal: String = ""
     var sexo: String = ""
-    var esCachorro: Boolean = false
+    var aprobado: Boolean = false
 }
