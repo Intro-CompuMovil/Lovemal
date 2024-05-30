@@ -15,6 +15,6 @@ class AdminActivity : AppCompatActivity() {
     }
 
     private fun managePets(){
-        
+
     }
 }
