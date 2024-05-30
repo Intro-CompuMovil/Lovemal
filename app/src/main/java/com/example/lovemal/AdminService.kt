@@ -1,4 +1,4 @@
-package com.example.lovemal.service
+package com.example.lovemal
 
 import android.app.Service
 import android.content.Intent
@@ -16,20 +16,20 @@ import com.google.firebase.database.ValueEventListener
 class AdminService : Service() {
 
     private lateinit var database: FirebaseDatabase
-    private lateinit var userRef: DatabaseReference
+    private lateinit var petRef: DatabaseReference
     private lateinit var valueEventListener: ValueEventListener
 
     override fun onCreate() {
         super.onCreate()
         database = FirebaseDatabase.getInstance()
-        userRef = database.getReference("puppies/")
+        petRef = database.getReference("puppies/")
 
         // Listener para escuchar cambios en la lista de usuarios disponibles
         valueEventListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Recorrer todos los usuarios
-                dataSnapshot.children.forEach { userSnapshot ->
-                    val pet = userSnapshot.getValue(Pet::class.java)
+                dataSnapshot.children.forEach { petSnapshot ->
+                    val pet = petSnapshot.getValue(Pet::class.java)
                     if (pet != null && pet.aprobado) {
                         // Usuario disponible, mostrar Toast
                         showToast("¡${pet.nombre} ha sido aprobada")
@@ -43,7 +43,7 @@ class AdminService : Service() {
         }
 
         // Agregar el listener a la referencia de la base de datos
-        userRef.addValueEventListener(valueEventListener)
+        petRef.addValueEventListener(valueEventListener)
     }
 
     override fun onBind(intent: Intent): IBinder? {
@@ -53,7 +53,7 @@ class AdminService : Service() {
     override fun onDestroy() {
         super.onDestroy()
         // Eliminar el listener al destruir el servicio
-        userRef.removeEventListener(valueEventListener)
+        petRef.removeEventListener(valueEventListener)
     }
 
     private fun showToast(message: String) {

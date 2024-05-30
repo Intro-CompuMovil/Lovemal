@@ -75,9 +75,7 @@ class RegistrationPetActivity : AppCompatActivity() {
 
         Toast.makeText(this, "¡Mascota registrada!", Toast.LENGTH_SHORT).show()
 
-        val intent = Intent(this, MenuActivity::class.java).apply {
-            putExtra("currentUserUid", currentUserUid)
-        }
+        val intent = Intent(this, MenuActivity::class.java)
         startActivity(intent)
     }
 
@@ -85,35 +83,6 @@ class RegistrationPetActivity : AppCompatActivity() {
         val regex = "\\d+".toRegex()
         val matchResult = regex.find(text)
         return matchResult?.value?.toInt() ?: 0
-    }
-
-    private fun getSelectedSex(): String {
-        val dog1Card = findViewById<androidx.cardview.widget.CardView>(R.id.Dog1)
-        val dog2Card = findViewById<androidx.cardview.widget.CardView>(R.id.Dog2)
-
-        val dog1Sex = dog1Card.findViewById<TextView>(android.R.id.text1)?.text.toString()
-        val dog2Sex = dog2Card.findViewById<TextView>(android.R.id.text1)?.text.toString()
-
-        return if (dog1Sex.isNotEmpty()) {
-            dog1Sex
-        } else {
-            dog2Sex
-        }
-    }
-
-    private fun getSelectedAge(): Int {
-        val rsAge = findViewById<RangeSlider>(R.id.rsAge)
-        return rsAge.values[0].toInt()
-    }
-
-    private fun getSelectedHeight(): Int {
-        val txtAltura = findViewById<TextView>(R.id.txtAltura).text.toString()
-        return txtAltura.replace(" cm", "").toInt()
-    }
-
-    private fun getSelectedWeight(): Int {
-        val txtPeso = findViewById<TextView>(R.id.txtPeso).text.toString()
-        return txtPeso.replace(" kg", "").toInt()
     }
 
     private fun initComponent(){

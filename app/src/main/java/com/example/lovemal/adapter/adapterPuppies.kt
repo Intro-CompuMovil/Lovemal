@@ -8,10 +8,23 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
+import com.example.lovemal.AdminActivity
 import com.example.lovemal.R
 import com.example.lovemal.models.Pet
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class adapterPuppies(private val context: Context, private val pets: List<Pet>) : BaseAdapter() {
+
+    private lateinit var database: FirebaseDatabase
+    private lateinit var myRef: DatabaseReference
+
+    private val PATH_PUPPIES = "puppies/"
+
     override fun getCount(): Int {
         return pets.size
     }
@@ -47,8 +60,26 @@ class adapterPuppies(private val context: Context, private val pets: List<Pet>) 
         petBreed.text = "Raza: ${pet.raza}"
 
         imgApButton.setOnClickListener {
-            // Aquí puedes realizar la acción que desees cuando se haga clic en el ImageButton
-            // Por ejemplo, abrir una nueva actividad, mostrar un diálogo, etc.
+            database = FirebaseDatabase.getInstance()
+            myRef = database.getReference(PATH_PUPPIES)
+
+            val petRef = myRef.child(pet.key)
+
+            petRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        // El objeto existe, actualizar el valor
+                        val pet = dataSnapshot.getValue(Pet::class.java)
+                        pet?.let {
+                            it.aprobado = true // Modificar el valor deseado
+                            petRef.setValue(it) // Guardar los cambios en la base de datos
+                        }
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                }
+            })
         }
 
         imgRjdButton.setOnClickListener {

@@ -86,7 +86,9 @@ class MenuActivity : AppCompatActivity() {
     }
 
     private fun goToPortal(){
-        val intent =Intent(this, Portal::class.java)
+        val intent =Intent(this, Portal::class.java).apply {
+            putExtra("currentUserUid", currentUserUid)
+        }
         startActivity(intent)
     }
 
