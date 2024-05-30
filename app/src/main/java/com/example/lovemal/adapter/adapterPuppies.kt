@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.ImageButton
 import android.widget.TextView
 import com.example.lovemal.R
 import com.example.lovemal.models.Pet
@@ -34,6 +35,8 @@ class adapterPuppies(private val context: Context, private val pets: List<Pet>) 
         val weightPet = view.findViewById<TextView>(R.id.weight_pet)
         val heightPet = view.findViewById<TextView>(R.id.height_pet)
         val petBreed = view.findViewById<TextView>(R.id.breed_pet)
+        val imgApButton = view.findViewById<ImageButton>(R.id.approve)
+        val imgRjdButton = view.findViewById<ImageButton>(R.id.rejected)
 
         val pet = getItem(position) as Pet
 
@@ -42,6 +45,16 @@ class adapterPuppies(private val context: Context, private val pets: List<Pet>) 
         weightPet.text = "Peso: ${pet.peso}kg"
         heightPet.text = "Altura: ${pet.altura}cm"
         petBreed.text = "Raza: ${pet.raza}"
+
+        imgApButton.setOnClickListener {
+            // Aquí puedes realizar la acción que desees cuando se haga clic en el ImageButton
+            // Por ejemplo, abrir una nueva actividad, mostrar un diálogo, etc.
+        }
+
+        imgRjdButton.setOnClickListener {
+            // Aquí puedes realizar la acción que desees cuando se haga clic en el ImageButton
+            // Por ejemplo, abrir una nueva actividad, mostrar un diálogo, etc.
+        }
 
         return view
     }
