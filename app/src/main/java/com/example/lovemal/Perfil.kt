@@ -17,6 +17,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.lovemal.adapter.RegistrarMascota
 import com.example.lovemal.adapter.adapterPets
 import com.example.lovemal.models.MyUser
 import com.example.lovemal.models.Pet

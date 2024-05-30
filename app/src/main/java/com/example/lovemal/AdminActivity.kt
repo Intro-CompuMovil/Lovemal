@@ -4,7 +4,6 @@ import android.content.ContentValues
 import android.os.Bundle
 import android.util.Log
 import android.widget.ListView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.lovemal.adapter.adapterPuppies
 import com.example.lovemal.models.Pet
