@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.lovemal.adapter.adapterPets
+import com.example.lovemal.adapter.adapterPuppies
 import com.example.lovemal.models.Pet
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -41,7 +41,7 @@ class AdminActivity : AppCompatActivity() {
         // Verifica que listView no sea nulo
         if (listView != null) {
             // Usar el adaptador personalizado adapterPets
-            val adapter = adapterPets(this, puppiesList)
+            val adapter = adapterPuppies(this, puppiesList)
 
             // Asignar el adaptador al ListView
             listView.adapter = adapter
