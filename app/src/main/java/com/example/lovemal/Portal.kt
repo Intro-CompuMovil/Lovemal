@@ -37,8 +37,8 @@ class Portal : AppCompatActivity() {
     private lateinit var myRef: DatabaseReference
     private lateinit var storage: FirebaseStorage
 
-    private lateinit var raza: String
-    private lateinit var animal: String
+    private var raza: String = ""
+    private var animal: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,11 +96,13 @@ class Portal : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun updateDisplayedInfo() {
+        val txtMascota = findViewById<TextView>(R.id.txtMascota)
         for(pet: Pet in petsList){
             if(pet.keyUser == currentUserUid){
                 if(pet.aprobado){
                     raza = pet.raza
                     animal = pet.animal
+                    txtMascota.text = "Estas buscando pareja para: " + pet.nombre
                 }
             }
         }
@@ -110,7 +112,9 @@ class Portal : AppCompatActivity() {
             val breedPet = findViewById<TextView>(R.id.txtbreed)
             val InfPet = findViewById<TextView>(R.id.txtInfPet)
 
-            val currentPet = petsList[0]
+
+
+            var currentPet = petsList[0]
 
             retrive_image(currentPet.key)
 

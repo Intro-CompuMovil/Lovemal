@@ -91,4 +91,14 @@
 
     </TextView>
 
+    <TextView
+        android:id="@+id/txtMascota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtInfPet"
+        android:text="Estas buscando pareja para: "
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        />
+
 </RelativeLayout>
