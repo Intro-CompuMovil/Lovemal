@@ -9,7 +9,6 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import android.widget.ArrayAdapter
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.ListView
@@ -18,6 +17,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.lovemal.adapter.adapterPets
 import com.example.lovemal.models.MyUser
 import com.example.lovemal.models.Pet
 import com.google.firebase.database.*
@@ -92,8 +92,8 @@ class Perfil : AppCompatActivity() {
     }
 
     private fun fillList() {
-        // Crear un adaptador para el ListView
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, petList.map { it.nombre })
+        // Usar el adaptador personalizado adapterPets
+        val adapter = adapterPets(this, petList)
 
         // Obtener la referencia del ListView
         val listView = findViewById<ListView>(R.id.petList)
