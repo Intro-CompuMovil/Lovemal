@@ -1,5 +1,6 @@
 package com.example.lovemal
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
@@ -17,21 +18,13 @@ import com.google.firebase.database.ValueEventListener
 
 class Portal : AppCompatActivity() {
 
-    private lateinit var viewPager: ViewPager
     private lateinit var btnDislike: ImageButton
     private lateinit var btnLike: ImageButton
-    private lateinit var perros: MutableList<Perro>
-    private var currentIndex = 0
-
+    private lateinit var petsList: MutableList<Pet>
     private lateinit var currentUserUid: String
     private val PATH_PETS = "pets/"
     private lateinit var database: FirebaseDatabase
     private lateinit var myRef: DatabaseReference
-
-    private lateinit var raza: String
-    private lateinit var animal: String
-
-    private val petsList: MutableList<Pet> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,34 +37,11 @@ class Portal : AppCompatActivity() {
 
         loadPets()
 
-        for(pet: Pet in petsList){
-            if(pet.keyUser == currentUserUid){
-                if(pet.aprobado){
-                    raza = pet.raza
-                    animal = pet.animal
-                }
-            }
-        }
-
-        // Inicializar la lista de perros y llenarla con información de perros e imágenes
-        perros = mutableListOf(
-            Perro("Apolo", "3 años, le gusta abrir puertas y escaparse de la casa",
-                listOf(R.drawable.apolo, R.drawable.apolo2, R.drawable.apolo3)),
-            Perro("Bella", "5 años, le encanta perseguir ardillas en el parque",
-                listOf(R.drawable.bella1, R.drawable.bella2, R.drawable.bella3)),
-            Perro("Rocky", "2 años, disfruta correr en la playa y nadar en el mar",
-                listOf(R.drawable.perrocavil1, R.drawable.perrocavil2, R.drawable.perrocavil3))
-        )
-
-        viewPager = findViewById(R.id.viewPager2)
-        val adapter = ImagePagerAdapter(this, perros[currentIndex].imagenes)
-        viewPager.adapter = adapter
-
         manageButtons()
-        updateDisplayedInfo()
     }
 
     private fun loadPets(){
+        petsList = mutableListOf()
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (singleSnapshot in dataSnapshot.children) {
@@ -81,13 +51,13 @@ class Portal : AppCompatActivity() {
                         petsList.add(myPuppy)
                     }
                 }
+                updateDisplayedInfo()
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
                 Log.w(ContentValues.TAG, "error en la consulta", databaseError.toException())
             }
         })
-
     }
 
     private fun manageButtons(){
@@ -100,25 +70,27 @@ class Portal : AppCompatActivity() {
 
         btnDislike.setOnClickListener {
             // Mover el primer perro al final de la lista
-            val firstPerro = perros.removeAt(0)
-            perros.add(firstPerro)
+            val firstPet = petsList.removeAt(0)
+            petsList.add(firstPet)
             // Actualizar la información y la imagen mostrada
             updateDisplayedInfo()
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun updateDisplayedInfo() {
-        val txtNombrePerro = findViewById<TextView>(R.id.txtNombrePerro)
-        val txtInfPet = findViewById<TextView>(R.id.txtInfPet)
-        // Obtener el perro actual
-        val currentPerro = perros[0]
-        // Mostrar la información del perro actual
-        txtNombrePerro.text = currentPerro.nombre
-        txtInfPet.text = currentPerro.info
-        // Actualizar las imágenes en el ViewPager
-        val adapter = ImagePagerAdapter(this, currentPerro.imagenes)
-        viewPager.adapter = adapter
+        if (petsList.isNotEmpty()) {
+            val NombrePet = findViewById<TextView>(R.id.txtNombrePerro)
+            val edadPet = findViewById<TextView>(R.id.txtEdadpet)
+            val breedPet = findViewById<TextView>(R.id.txtbreed)
+            val InfPet = findViewById<TextView>(R.id.txtInfPet)
+
+            val currentPet = petsList[0]
+
+            NombrePet.text = currentPet.nombre
+            edadPet.text = "Edad: ${currentPet.edad} años"
+            breedPet.text = "Raza: ${currentPet.raza}"
+            InfPet.text = currentPet.descripcion
+        }
     }
 }
-
-data class Perro(val nombre: String, val info: String, val imagenes: List<Int>)

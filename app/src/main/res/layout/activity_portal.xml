@@ -39,33 +39,52 @@
         android:scaleType="centerInside"
         android:clipToOutline="true" />
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager2"
-        android:layout_width="match_parent"
-        android:layout_height="450dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="10dp"
-        />
+    <ImageView
+        android:layout_width="410dp"
+        android:layout_height="300dp"/>
 
     <TextView
         android:id="@+id/txtNombrePerro"
-        android:layout_below="@id/viewPager2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30sp"
-        android:text="Apolo"
+        android:text="nombre"
         android:textStyle="bold|italic"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"/>
+
     <TextView
-        android:id="@+id/txtInfPet"
+        android:id="@+id/txtEdadpet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:text="Edad"
+        android:layout_below="@id/txtNombrePerro"
+        android:textStyle="bold|italic"
+        android:layout_marginStart="30dp"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:id="@+id/txtbreed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:text="Raza"
+        android:layout_toRightOf="@id/txtEdadpet"
+        android:layout_below="@id/txtNombrePerro"
+        android:textStyle="bold|italic"
+        android:layout_marginStart="130dp"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:id="@+id/txtInfPet"
+        android:layout_width="400dp"
+        android:layout_height="120dp"
         android:textSize="25dp"
-        android:text="3 años, le gusta abrir puertas y escaparse de la casa"
+        android:text="Descripción"
         android:textStyle="bold"
         android:gravity="center"
-        android:layout_below="@id/txtNombrePerro"
+        android:layout_below="@id/txtEdadpet"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true">
 
