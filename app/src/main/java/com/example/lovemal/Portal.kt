@@ -26,6 +26,9 @@ class Portal : AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var myRef: DatabaseReference
 
+    private lateinit var raza: String
+    private lateinit var animal: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_portal)
@@ -65,7 +68,10 @@ class Portal : AppCompatActivity() {
         btnDislike = findViewById(R.id.btnDislike)
 
         btnLike.setOnClickListener {
-            startActivity(Intent(this, Match::class.java))
+            val intent = Intent(this, Match::class.java).apply {
+                putExtra("petUid", petsList[0].key)
+            }
+            startActivity(intent)
         }
 
         btnDislike.setOnClickListener {
@@ -79,6 +85,14 @@ class Portal : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun updateDisplayedInfo() {
+        for(pet: Pet in petsList){
+            if(pet.keyUser == currentUserUid){
+                if(pet.aprobado){
+                    raza = pet.raza
+                    animal = pet.animal
+                }
+            }
+        }
         if (petsList.isNotEmpty()) {
             val NombrePet = findViewById<TextView>(R.id.txtNombrePerro)
             val edadPet = findViewById<TextView>(R.id.txtEdadpet)
@@ -87,10 +101,16 @@ class Portal : AppCompatActivity() {
 
             val currentPet = petsList[0]
 
-            NombrePet.text = currentPet.nombre
-            edadPet.text = "Edad: ${currentPet.edad} años"
-            breedPet.text = "Raza: ${currentPet.raza}"
-            InfPet.text = currentPet.descripcion
+            if(currentPet.raza == raza && currentPet.animal == animal && currentPet.keyUser != currentUserUid) {
+                NombrePet.text = currentPet.nombre
+                edadPet.text = "Edad: ${currentPet.edad} años"
+                breedPet.text = "Raza: ${currentPet.raza}"
+                InfPet.text = currentPet.descripcion
+            }
+            else{
+                val firstPet = petsList.removeAt(0)
+                petsList.add(firstPet)
+            }
         }
     }
 }

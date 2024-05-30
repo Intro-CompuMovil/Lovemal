@@ -103,12 +103,12 @@ class Perfil : AppCompatActivity() {
         listView.adapter = adapter
         
         listView.setOnItemClickListener { parent, view, position, id ->
+            makeAllFalse()
+
             val mascotaElegida = petList[position]
 
             database = FirebaseDatabase.getInstance()
             myRef = database.getReference(PATH_PETS)
-
-            makeAllFalse()
 
             val petRef = myRef.child(mascotaElegida.key)
 
