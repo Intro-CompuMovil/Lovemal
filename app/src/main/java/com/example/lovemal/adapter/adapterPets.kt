@@ -10,7 +10,7 @@ import android.widget.TextView
 import com.example.lovemal.R
 import com.example.lovemal.models.Pet
 
-class adapterPets(private val context: Context, private val pets: List<Pet>) : BaseAdapter() {
+class adapterPets(private val context: Context, private val pets: List<Pet>, private val userUid: String) : BaseAdapter() {
 
     override fun getCount(): Int {
         return pets.size
@@ -39,12 +39,14 @@ class adapterPets(private val context: Context, private val pets: List<Pet>) : B
 
         val pet = getItem(position) as Pet
 
-        petName.text = "Nombre: ${pet.nombre}"
-        agePet.text = "Edad: ${pet.edad}"
-        weightPet.text = "Peso: ${pet.peso}kg"
-        heightPet.text = "Altura: ${pet.altura}cm"
-        petBreed.text = "Raza: ${pet.raza}"
-        description.text = pet.descripcion
+        if(pet.keyUser == userUid) {
+            petName.text = "Nombre: ${pet.nombre}"
+            agePet.text = "Edad: ${pet.edad}"
+            weightPet.text = "Peso: ${pet.peso}kg"
+            heightPet.text = "Altura: ${pet.altura}cm"
+            petBreed.text = "Raza: ${pet.raza}"
+            description.text = pet.descripcion
+        }
 
         return view
     }
