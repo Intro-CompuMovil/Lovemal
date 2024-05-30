@@ -1,14 +1,10 @@
 package com.example.lovemal
 
 import android.content.ContentValues
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.ImageButton
 import android.widget.ListView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.lovemal.adapter.adapterPuppies
 import com.example.lovemal.adapter.sellAdapter
 import com.example.lovemal.models.Pet
 import com.google.firebase.database.DataSnapshot
