@@ -13,19 +13,9 @@ class MarketActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_market)
-        val btnApolo = findViewById<ImageButton>(R.id.apoloImageButton)
-        btnApolo.setOnClickListener{goToApolo()}
-        val btnOlivia = findViewById<ImageButton>(R.id.oliviaImageButton)
-        btnOlivia.setOnClickListener { goToApolo() }
-        val btnLupita = findViewById<ImageButton>(R.id.lupitaImageButton)
-        btnLupita.setOnClickListener { goToApolo() }
-        val btnLorenzo = findViewById<ImageButton>(R.id.lorenzoImageButton)
-        btnLorenzo.setOnClickListener { goToApolo() }
+
 
     }
-    private fun goToApolo(){
-        val intent = Intent(this, ApoloActivity::class.java)
-        startActivity(intent)
-    }
+
 
 }

@@ -94,7 +94,7 @@ class Perfil : AppCompatActivity() {
 
     private fun fillList() {
         // Usar el adaptador personalizado adapterPets
-        val adapter = adapterPets(this, petList)
+        val adapter = adapterPets(this, petList, currentUserUid)
 
         // Obtener la referencia del ListView
         val listView = findViewById<ListView>(R.id.petList)
@@ -107,6 +107,8 @@ class Perfil : AppCompatActivity() {
 
             database = FirebaseDatabase.getInstance()
             myRef = database.getReference(PATH_PETS)
+
+            makeAllFalse()
 
             val petRef = myRef.child(mascotaElegida.key)
 
@@ -126,6 +128,30 @@ class Perfil : AppCompatActivity() {
                 }
             })
         }
+    }
+    private fun makeAllFalse(){
+        myRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (snapshot in dataSnapshot.children) {
+                        val pet = snapshot.getValue(Pet::class.java)
+                        pet?.let {
+                            // Si el keyUser coincide con el currentUserUid, cambiar aprobado a false
+                            if (it.keyUser == currentUserUid) {
+                                it.aprobado = false
+                                // Guardar los cambios en la base de datos
+                                snapshot.ref.setValue(it)
+                            }
+                        }
+                    }
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Manejo de errores
+                Log.e("FirebaseError", "Error: ${databaseError.message}")
+            }
+        })
     }
 
     private fun askPermissionCamera() {
