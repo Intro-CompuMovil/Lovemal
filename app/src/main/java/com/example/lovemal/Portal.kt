@@ -1,20 +1,28 @@
 package com.example.lovemal
 
 import android.annotation.SuppressLint
+import android.app.ProgressDialog
 import android.content.ContentValues
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
+import com.bumptech.glide.Glide
 import com.example.lovemal.models.Pet
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import java.io.File
 
 class Portal : AppCompatActivity() {
 
@@ -101,6 +109,8 @@ class Portal : AppCompatActivity() {
 
             val currentPet = petsList[0]
 
+            retrive_image(currentPet.key)
+
             if(currentPet.raza == raza && currentPet.animal == animal && currentPet.keyUser != currentUserUid) {
                 NombrePet.text = currentPet.nombre
                 edadPet.text = "Edad: ${currentPet.edad} años"
@@ -112,5 +122,33 @@ class Portal : AppCompatActivity() {
                 petsList.add(firstPet)
             }
         }
+    }
+
+    fun retrive_image(uid: String) {
+        val storageReference: StorageReference = FirebaseStorage.getInstance().reference
+        val localFile = File.createTempFile("image", "jpeg")
+        val image_refrance: StorageReference = storageReference.child("profileImages/${uid}")
+
+        val progressDialog = ProgressDialog(this)
+        progressDialog.setTitle("Retriving Image...")
+        progressDialog.setMessage("Processing...")
+        progressDialog.show()
+
+        val image_view = findViewById<ImageView>(R.id.petImage)
+
+        image_refrance.downloadUrl.addOnSuccessListener { uri: Uri ->
+
+            Glide.with(this)
+                .load(uri)
+                .into(image_view)
+
+            progressDialog.dismiss()
+            Toast.makeText(this,"Image Retrived Successfull",Toast.LENGTH_LONG).show()
+        }
+            .addOnFailureListener { exception ->
+                progressDialog.dismiss()
+                Toast.makeText(this,"Image Retrived Failed: "+exception.message,Toast.LENGTH_LONG).show()
+
+            }
     }
 }

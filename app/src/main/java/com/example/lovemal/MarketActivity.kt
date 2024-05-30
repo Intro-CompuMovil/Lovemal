@@ -17,12 +17,8 @@ class MarketActivity : AppCompatActivity() {
 
     private lateinit var database: FirebaseDatabase
     private lateinit var myRef: DatabaseReference
-    private lateinit var petsList: MutableList<Pet>
-    private lateinit var currentUserUid: String
 
     private var PATH_PUPPIES = "puppies/"
-    private var raza: String? = null
-    private var animal: String? = null
 
     private var puppiesList: MutableList<Pet> = mutableListOf()
 

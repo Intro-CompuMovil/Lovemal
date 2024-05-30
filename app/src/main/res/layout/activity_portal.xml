@@ -40,6 +40,7 @@
         android:clipToOutline="true" />
 
     <ImageView
+        android:id="@+id/petImage"
         android:layout_width="410dp"
         android:layout_height="300dp"/>
 
