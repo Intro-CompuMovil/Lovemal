@@ -1,5 +1,3 @@
-package com.example.lovemal
-
 import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Intent
@@ -15,6 +13,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.example.lovemal.MenuActivity
+import com.example.lovemal.R
 import com.example.lovemal.databinding.ActivityRegistrarMascotaBinding
 import com.example.lovemal.models.Pet
 import com.google.firebase.auth.FirebaseAuth
@@ -37,8 +37,7 @@ class RegistrarMascota : AppCompatActivity() {
 
     private val PATH_PETS = "pets/"
     private val PATH_PROFILE_IMAGES = "profileImages/"
-    val storage_path = "profileImages/*"
-    private lateinit var mAuth: FirebaseAuth
+    val storage_path = "profileImages/"
     private lateinit var mfirestore: FirebaseFirestore
 
     private lateinit var database: FirebaseDatabase
@@ -65,9 +64,11 @@ class RegistrarMascota : AppCompatActivity() {
         photo_pet = findViewById(R.id.imgRegisDog)
         btn_add = findViewById(R.id.btn_photo)
 
-        progressDialog = ProgressDialog(this) // Inicializar progressDialog
+
+
 
         currentUserUid = intent.getStringExtra("currentUserUid")!!
+
         btn_add.setOnClickListener {
             uploadPhoto()
         }
@@ -96,7 +97,7 @@ class RegistrarMascota : AppCompatActivity() {
     private fun subirPhoto(imageUrl: Uri) {
         progressDialog.setMessage("Actualizando foto")
         progressDialog.show()
-        val rute_storage_photo = "$storage_path$photo${mAuth.uid}$idd"
+        val rute_storage_photo = "$storage_path$photo${currentUserUid}$idd"
         val reference: StorageReference = storageReference.child(rute_storage_photo)
         reference.putFile(imageUrl)
             .addOnSuccessListener { taskSnapshot ->
