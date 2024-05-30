@@ -1,5 +1,6 @@
 package com.example.lovemal
 
+import PetManagerFirebase
 import android.Manifest
 import android.content.ContentValues
 import android.content.Intent
@@ -8,7 +9,6 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -18,13 +18,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.viewpager.widget.ViewPager
 import com.example.lovemal.models.MyUser
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.example.lovemal.models.Pet
+import com.google.firebase.database.*
 
 class Perfil : AppCompatActivity() {
 
@@ -33,16 +29,21 @@ class Perfil : AppCompatActivity() {
 
     private lateinit var currentUserUid: String
 
-    private val PATH_PETS = "pets/"
     private val PATH_USERS = "users/"
     private lateinit var database: FirebaseDatabase
     private lateinit var myRef: DatabaseReference
+
+    private lateinit var petManager: PetManagerFirebase
+    private lateinit var petList: MutableList<Pet>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_perfil)
 
         currentUserUid = intent.getStringExtra("currentUserUid")!!
+
+        database = FirebaseDatabase.getInstance()
+        petManager = PetManagerFirebase()
 
         getUserFromDB()
 
@@ -51,18 +52,23 @@ class Perfil : AppCompatActivity() {
 
         askPermissionCamera()
 
-        fillList()
+        // Cargar la lista de mascotas usando el callback
+        petManager.loadPets(object : PetManagerFirebase.PetLoadCallback {
+            override fun onPetsLoaded(pets: List<Pet>) {
+                petList = pets.toMutableList()
+                fillList()
+            }
+        })
     }
 
-    private fun getUserFromDB(){
-        database = FirebaseDatabase.getInstance()
+    private fun getUserFromDB() {
         myRef = database.getReference(PATH_USERS)
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (singleSnapshot in dataSnapshot.children) {
                     val myUser = singleSnapshot.getValue(MyUser::class.java)
                     Log.i(ContentValues.TAG, "Encontró usuario: " + myUser?.name)
-                    if(myUser?.key == currentUserUid){
+                    if (myUser?.key == currentUserUid) {
                         val txtName = findViewById<TextView>(R.id.idName2)
                         txtName.text = myUser.name
                         val txtCorreo = findViewById<TextView>(R.id.textViewCorreo2)
@@ -71,13 +77,14 @@ class Perfil : AppCompatActivity() {
                     }
                 }
             }
+
             override fun onCancelled(databaseError: DatabaseError) {
                 Log.w(ContentValues.TAG, "error en la consulta", databaseError.toException())
             }
         })
     }
 
-    private fun addPet(){
+    private fun addPet() {
         val intent = Intent(this, RegistrarMascota::class.java).apply {
             putExtra("currentUserUid", currentUserUid)
         }
@@ -85,11 +92,8 @@ class Perfil : AppCompatActivity() {
     }
 
     private fun fillList() {
-        // Obtener los arreglos de recursos XML
-        val mascotasArray = resources.getStringArray(R.array.mascotas)
-
         // Crear un adaptador para el ListView
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, mascotasArray)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, petList.map { it.nombre })
 
         // Obtener la referencia del ListView
         val listView = findViewById<ListView>(R.id.petList)
@@ -98,13 +102,12 @@ class Perfil : AppCompatActivity() {
         listView.adapter = adapter
     }
 
-
-    private fun askPermissionCamera(){
+    private fun askPermissionCamera() {
         val btnCamara = findViewById<ImageButton>(R.id.btnEditarFoto)
-        btnCamara.setOnClickListener{
+        btnCamara.setOnClickListener {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
                 openCamera()
-            }   else {
+            } else {
                 ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), CAMERA_PERMISSION_CODE)
             }
         }
@@ -119,11 +122,7 @@ class Perfil : AppCompatActivity() {
         }
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == CAMERA_PERMISSION_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
