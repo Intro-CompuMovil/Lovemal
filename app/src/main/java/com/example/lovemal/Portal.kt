@@ -28,6 +28,9 @@ class Portal : AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var myRef: DatabaseReference
 
+    private lateinit var raza: String
+    private lateinit var animal: String
+
     private val petsList: MutableList<Pet> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +43,15 @@ class Portal : AppCompatActivity() {
         myRef = database.getReference(PATH_PETS)
 
         loadPets()
+
+        for(pet: Pet in petsList){
+            if(pet.keyUser == currentUserUid){
+                if(pet.aprobado){
+                    raza = pet.raza
+                    animal = pet.animal
+                }
+            }
+        }
 
         // Inicializar la lista de perros y llenarla con información de perros e imágenes
         perros = mutableListOf(

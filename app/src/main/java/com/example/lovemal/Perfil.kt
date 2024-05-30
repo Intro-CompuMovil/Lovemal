@@ -30,6 +30,7 @@ class Perfil : AppCompatActivity() {
     private lateinit var currentUserUid: String
 
     private val PATH_USERS = "users/"
+    private val PATH_PETS = "pets/"
     private lateinit var database: FirebaseDatabase
     private lateinit var myRef: DatabaseReference
 
@@ -104,7 +105,26 @@ class Perfil : AppCompatActivity() {
         listView.setOnItemClickListener { parent, view, position, id ->
             val mascotaElegida = petList[position]
 
+            database = FirebaseDatabase.getInstance()
+            myRef = database.getReference(PATH_PETS)
 
+            val petRef = myRef.child(mascotaElegida.key)
+
+            petRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        // El objeto existe, actualizar el valor
+                        val pet = dataSnapshot.getValue(Pet::class.java)
+                        pet?.let {
+                            it.aprobado = true // Modificar el valor deseado
+                            petRef.setValue(it) // Guardar los cambios en la base de datos
+                        }
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                }
+            })
         }
     }
 
