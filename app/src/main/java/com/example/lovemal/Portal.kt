@@ -20,8 +20,10 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
 import java.io.File
 
 class Portal : AppCompatActivity() {
@@ -33,6 +35,7 @@ class Portal : AppCompatActivity() {
     private val PATH_PETS = "pets/"
     private lateinit var database: FirebaseDatabase
     private lateinit var myRef: DatabaseReference
+    private lateinit var storage: FirebaseStorage
 
     private lateinit var raza: String
     private lateinit var animal: String
@@ -122,6 +125,35 @@ class Portal : AppCompatActivity() {
                 petsList.add(firstPet)
             }
         }
+    }
+
+    private fun downloadFiles(uid: String) {
+        storage = Firebase.storage("gs://icm24101-419314.appspot.com")
+
+        val localFile = File.createTempFile("profile_image", "jpeg")
+        val imageRef = storage.reference.child("profileImages/${uid}")
+
+        val image_view = findViewById<ImageView>(R.id.petImage)
+
+        imageRef.getFile(localFile)
+            .addOnSuccessListener { taskSnapshot ->
+                // Successfully downloaded data to local file
+                Glide.with(this)
+                    .load(localFile.absolutePath) // Utilizar la URL de la foto
+                    .placeholder(R.drawable.dog_airedale_terrier_svgrepo_com) // Placeholder mientras se carga la imagen
+                    .error(R.drawable.baseline_account_box_24) // Imagen de error si la carga falla
+                    .into(image_view)
+                // Notificar al adaptador que los datos han cambiado
+                Log.i("FBApp", "succesfully downloaded")
+                // Update UI using the localFile
+            }.addOnFailureListener { exception ->
+                // Handle failed download
+                // ...
+                Toast.makeText(this,"Image Retrived Failed: "+exception.message,Toast.LENGTH_LONG).show()
+            }
+
+
+
     }
 
     fun retrive_image(uid: String) {
