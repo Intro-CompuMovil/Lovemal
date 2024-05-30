@@ -118,6 +118,25 @@
             android:textColor="@color/white"/>
     </RadioGroup>
 
+    <ImageView
+        android:id="@+id/imgRegisDog"
+        android:layout_width="200sp"
+        android:layout_height="200sp"
+        android:layout_below="@+id/radioGroupMascota"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/dog_airedale_terrier_svgrepo_com"/>
+
+
+    <Button
+        android:id="@+id/btn_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/red"
+        android:layout_below="@+id/radioGroupMascota"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200sp"
+        android:text="Foto" />
+
     <TextView
         android:id="@+id/radioGroupError"
         android:layout_width="wrap_content"
