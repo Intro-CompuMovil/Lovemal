@@ -64,10 +64,11 @@ class RegistrationPetActivity : AppCompatActivity() {
 
         val myPet = Pet()
         myPet.key = UUID.randomUUID().toString()
-        myPet.sexo = getSelectedSex()
-        myPet.edad = getSelectedAge()
-        myPet.altura = getSelectedHeight()
-        myPet.peso = getSelectedWeight()
+        myPet.sexo = if (isDogSelecter) "Macho" else "Hembra"
+        myPet.edad = extractNumber(txtAge.text.toString())
+        myPet.altura = extractNumber(txtAltura.text.toString())
+        myPet.peso = extractNumber(txtPeso.text.toString())
+
 
         myRef = database.getReference(PATH_PUPPIES + myPet.key)
         myRef.setValue(myPet)
@@ -78,6 +79,12 @@ class RegistrationPetActivity : AppCompatActivity() {
             putExtra("currentUserUid", currentUserUid)
         }
         startActivity(intent)
+    }
+
+    private fun extractNumber(text: String): Int {
+        val regex = "\\d+".toRegex()
+        val matchResult = regex.find(text)
+        return matchResult?.value?.toInt() ?: 0
     }
 
     private fun getSelectedSex(): String {

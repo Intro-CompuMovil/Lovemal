@@ -100,6 +100,12 @@ class Perfil : AppCompatActivity() {
 
         // Asignar el adaptador al ListView
         listView.adapter = adapter
+        
+        listView.setOnItemClickListener { parent, view, position, id ->
+            val mascotaElegida = petList[position]
+
+
+        }
     }
 
     private fun askPermissionCamera() {
