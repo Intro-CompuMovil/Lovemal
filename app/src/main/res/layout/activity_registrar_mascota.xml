@@ -1,10 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrarMascota">
+    tools:context=".RegistrarMascota"
+    android:background="@color/color4"
+    android:layout_margin="10dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/txtNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre..."
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"/>
+
+    <EditText
+        android:id="@+id/txtDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Descripción..."
+        android:layout_below="@+id/txtNombre"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"/>
+
+    <EditText
+        android:id="@+id/txtRaza"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Raza..."
+        android:layout_below="@+id/txtDescripcion"
+        android:layout_marginTop="10dp"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white" />
+
+    <EditText
+        android:id="@+id/txtEdad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Edad..."
+        android:layout_below="@+id/txtRaza"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/txtAltura"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Altura... (en centímetros)"
+        android:layout_below="@+id/txtEdad"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/txtPeso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Peso... (en kilos)"
+        android:layout_below="@+id/txtAltura"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:inputType="number"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroupMascota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtPeso"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioPerro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Perro"
+            android:textColor="@color/white"/>
+
+        <RadioButton
+            android:id="@+id/radioGato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gato"
+            android:textColor="@color/white"/>
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/radioGroupMascota2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtPeso"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioMacho"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Macho"
+            android:textColor="@color/white"/>
+
+        <RadioButton
+            android:id="@+id/radioHembra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hembra"
+            android:textColor="@color/white"/>
+    </RadioGroup>
+
+    <ImageView
+        android:id="@+id/imgRegisDog"
+        android:layout_width="200sp"
+        android:layout_height="200sp"
+        android:layout_below="@+id/radioGroupMascota"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/dog_airedale_terrier_svgrepo_com"/>
+
+
+    <Button
+        android:id="@+id/btn_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/red"
+        android:layout_below="@+id/radioGroupMascota"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200sp"
+        android:text="Foto" />
+
+    <TextView
+        android:id="@+id/radioGroupError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/radioGroupMascota"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/red"
+        android:visibility="gone"
+        android:text="Debe seleccionar una opción"/>
+
+    <TextView
+        android:id="@+id/radioGroupError2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/radioGroupMascota2"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/red"
+        android:visibility="gone"
+        android:text="Debe seleccionar una opción"/>
+
+    <Button
+        android:id="@+id/btnNextStep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:text="Continuar"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/red" />
+
+</RelativeLayout>

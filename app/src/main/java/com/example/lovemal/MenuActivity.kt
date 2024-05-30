@@ -31,7 +31,7 @@ class MenuActivity : AppCompatActivity() {
         setContentView(R.layout.activity_menu)
         isAdmin()
 
-        currentUserUid = intent.getStringExtra("current_user_uid")!!
+        currentUserUid = intent.getStringExtra("currentUserUid")!!
 
         manageButtons()
     }

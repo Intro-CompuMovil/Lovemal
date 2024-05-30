@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() {
 
                             // Inicia la siguiente actividad y envía la UID del usuario actual como extra
                             val intent = Intent(this, MenuActivity::class.java)
-                            intent.putExtra("current_user_uid", currentUserUid)
+                            intent.putExtra("currentUserUid", currentUserUid)
                             startActivity(intent)
                             finish()
                         }
