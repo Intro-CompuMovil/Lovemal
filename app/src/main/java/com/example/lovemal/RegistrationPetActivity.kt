@@ -65,6 +65,10 @@ class RegistrationPetActivity : AppCompatActivity() {
         val myPet = Pet()
         myPet.esCachorro = true
         myPet.key = UUID.randomUUID().toString()
+        myPet.sexo = getSelectedSex()
+        myPet.edad = getSelectedAge()
+        myPet.altura = getSelectedHeight()
+        myPet.peso = getSelectedWeight()
 
         myRef = database.getReference(PATH_PUPPIES + myPet.key)
         myRef.setValue(myPet)
@@ -75,6 +79,35 @@ class RegistrationPetActivity : AppCompatActivity() {
             putExtra("currentUserUid", currentUserUid)
         }
         startActivity(intent)
+    }
+
+    private fun getSelectedSex(): String {
+        val dog1Card = findViewById<androidx.cardview.widget.CardView>(R.id.Dog1)
+        val dog2Card = findViewById<androidx.cardview.widget.CardView>(R.id.Dog2)
+
+        val dog1Sex = dog1Card.findViewById<TextView>(android.R.id.text1)?.text.toString()
+        val dog2Sex = dog2Card.findViewById<TextView>(android.R.id.text1)?.text.toString()
+
+        return if (dog1Sex.isNotEmpty()) {
+            dog1Sex
+        } else {
+            dog2Sex
+        }
+    }
+
+    private fun getSelectedAge(): Int {
+        val rsAge = findViewById<RangeSlider>(R.id.rsAge)
+        return rsAge.values[0].toInt()
+    }
+
+    private fun getSelectedHeight(): Int {
+        val txtAltura = findViewById<TextView>(R.id.txtAltura).text.toString()
+        return txtAltura.replace(" cm", "").toInt()
+    }
+
+    private fun getSelectedWeight(): Int {
+        val txtPeso = findViewById<TextView>(R.id.txtPeso).text.toString()
+        return txtPeso.replace(" kg", "").toInt()
     }
 
     private fun initComponent(){
