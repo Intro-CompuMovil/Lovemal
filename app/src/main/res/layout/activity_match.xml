@@ -35,15 +35,14 @@
         android:padding="12dp"
         android:elevation="4dp" />
 
-    <ImageButton
+    <Button
         android:id="@+id/btnWhatsapp"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="50dp"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/whatsapplogo"
+        android:text="Mostrar correo"
         android:background="@drawable/round_corners"/>
 
     <TextView
