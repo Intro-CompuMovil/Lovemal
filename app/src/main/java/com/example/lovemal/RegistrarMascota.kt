@@ -138,7 +138,7 @@ class RegistrarMascota : AppCompatActivity() {
                     myRef = database.getReference(PATH_PETS + myPet.key)
                     myRef.setValue(myPet)
 
-                    val intent = Intent(this, Perfil::class.java).apply {
+                    val intent = Intent(this, MenuActivity::class.java).apply {
                         putExtra("currentUserUid", currentUserUid)
                     }
                     startActivity(intent)

@@ -1,5 +1,6 @@
 package com.example.lovemal.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -23,6 +24,7 @@ class adapterPets(private val context: Context, private val pets: List<Pet>) : B
         return position.toLong()
     }
 
+    @SuppressLint("SetTextI18n")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 
         val view: View = convertView ?: LayoutInflater
@@ -37,11 +39,11 @@ class adapterPets(private val context: Context, private val pets: List<Pet>) : B
 
         val pet = getItem(position) as Pet
 
-        petName.text = pet.nombre
-        agePet.text = pet.edad.toString()
-        weightPet.text = pet.peso.toString()
-        heightPet.text = pet.altura.toString()
-        petBreed.text = pet.raza
+        petName.text = "Nombre: ${pet.nombre}"
+        agePet.text = "Edad: ${pet.edad}"
+        weightPet.text = "Peso: ${pet.peso}kg"
+        heightPet.text = "Altura: ${pet.altura}cm"
+        petBreed.text = "Raza: ${pet.raza}"
         description.text = pet.descripcion
 
         return view
